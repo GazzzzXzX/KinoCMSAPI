@@ -1,0 +1,1491 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>KinoCMSAPI</name>
+    </assembly>
+    <members>
+        <member name="M:KinoCMSAPI.Controllers.CinemaController.GetCinemas">
+            <summary>
+            Возвращает все кинотеатры.
+            </summary>
+            <returns></returns>
+            <response code="200">
+            Возвращает список кинотеатров
+            <remarks>
+            
+            		 {
+            			"name": "Дюк",
+            			"desc": "Лучший кинотеатр",
+            			"conditions": "Приходить в маске!",
+            			"img": "url"
+            		 },
+            		 {
+            			"name": "Дюк2",
+            			"desc": "Лучший кинотеатр2",
+            			"conditions": "Приходить в маске!2",
+            			"img": "url"
+            		 }
+            		 
+            </remarks>
+            </response>
+            <response code="400">Ошибка в вополнении запроса</response>
+            <response code="400">База данных пуста</response> 
+        </member>
+        <member name="M:KinoCMSAPI.Controllers.CinemaController.GetCinema(System.String)">
+            <summary>
+            Возвращает конкретный кинотеатр.
+            </summary>
+            <param name="name">Ключ объекта Cinema (String)</param>
+            <returns></returns>
+            <response code="200">
+            Возвращает конкретный кинотеатр
+            <remarks>
+            
+            		 {
+            			"name": "Дюк",
+            			"desc": "Лучший кинотеатр",
+            			"conditions": "Приходить в маске!",
+            			"img": "url"
+            		 }
+            		 
+            </remarks>
+            </response>
+            <response code="400">Ошибка в вополнении запроса</response>     
+        </member>
+        <member name="M:KinoCMSAPI.Controllers.CinemaController.PostCinema(KinoCMSAPI.Models.Cinema)">
+            <summary>
+            Добавление кинотеатра. Authorize = Administator
+            </summary>
+            <param name="obj">Объект Cinema(Name, Desc, Conditions, Img)</param>
+            <returns></returns>
+            <response code="201">
+            Возвращает только что созданный объект
+            <remarks>
+            
+            		 {
+            			"name": "Дюк",
+            			"desc": "Лучший кинотеатр",
+            			"conditions": "Приходить в маске!",
+            			"img": "url"
+            		 }
+            		 
+            </remarks>
+            </response>
+            <response code="400">Ошибка при выполнении запроса</response>       
+            <response code="400">Данное поле отсутсвует в безе</response> 
+        </member>
+        <member name="M:KinoCMSAPI.Controllers.CinemaController.PutCinema(KinoCMSAPI.Models.Cinema)">
+            <summary>
+            Изменение конеретного кинотеатра. Authorize = Administator
+            </summary>
+            <param name="obj">Объект Cinema(Name, Desc, Conditions, Img)</param>
+            <returns></returns>
+            <response code="201">
+            Возвращает только что изменившийся объект
+            <remarks>
+            
+            		 {
+            			"name": "Дюк",
+            			"desc": "Лучший кинотеатр",
+            			"conditions": "Приходить в маске!",
+            			"img": "url"
+            		 }
+            		 
+            </remarks>
+            </response>
+            <response code="400">Если по каим либо причинам объект не был изменен</response>
+        </member>
+        <member name="M:KinoCMSAPI.Controllers.CinemaController.DeleteCinema(System.String)">
+            <summary>
+            Удаление конкретного кинотеатра. Authorize = Administator
+            </summary>
+            <param name="name">Ключ объекта Cinema</param>
+            <returns></returns>
+            <response code="204">Сообщает что объект был удален из базы</response>
+            <response code="400">Если по каим либо причинам объект не был удален</response>
+        </member>
+        <member name="M:KinoCMSAPI.Controllers.FilmController.PostFilm(KinoCMSAPI.Models.Film)">
+            <summary>
+            Запись объекта "фильм" в бд. Authorize = Administator
+            </summary>
+            <param name="obj">Объект фильм</param>
+            <returns></returns>
+            <response code="201">
+            Возвращает только что созданный объект
+            <remarks>
+            
+            		{
+            			"id": "60292c8c5f3d9b3af81083cb",
+            			"name": "Название фильма",
+            			"desc": "Описание",
+            			"img": "url",
+            			"price": 100,
+            			"urlVideo": "UrlVideo",
+            			"d3": true,
+            			"d2": true,
+            			"imax": true
+            		}
+            		 
+            </remarks>
+            </response>
+            <response code="400">Если по каим либо причинам объект не был добавлен в базу</response>       
+        </member>
+        <member name="M:KinoCMSAPI.Controllers.FilmController.GetFilms">
+            <summary>
+            Получение всех фильмов которые есть на данный момент.
+            </summary>
+            <returns></returns>
+            <response code="200">
+            Возвращает список фильмов
+            <remarks>
+            
+            		{
+            			"id": "60292c8c5f3d9b3af81083cb",
+            			"name": "Название фильма",
+            			"desc": "Описание",
+            			"img": "url",
+            			"price": 100,
+            			"urlVideo": "UrlVideo",
+            			"d3": true,
+            			"d2": true,
+            			"imax": true
+            		},
+            		{
+            			"id": "60292c8c5f3d9b3af81083cb",
+            			"name": "Название фильма",
+            			"desc": "Описание",
+            			"img": "url",
+            			"price": 100,
+            			"urlVideo": "UrlVideo",
+            			"d3": true,
+            			"d2": true,
+            			"imax": true
+            		}
+            		 
+            </remarks>
+            </response>
+            <response code="400">Если по каим либо причинам объект не был найден</response>
+        </member>
+        <member name="M:KinoCMSAPI.Controllers.FilmController.GetFilm(System.String)">
+            <summary>
+            Получение конкретного фильма.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+            <response code="200">
+            Возвращает объект фильма
+            <remarks>
+            
+            		{
+            			"id": "60292c8c5f3d9b3af81083cb",
+            			"name": "Название фильма",
+            			"desc": "Описание",
+            			"img": "url",
+            			"price": 100,
+            			"urlVideo": "UrlVideo",
+            			"d3": true,
+            			"d2": true,
+            			"imax": true
+            		}
+            		 
+            </remarks>
+            </response>
+            <response code="400">Если по каим либо причинам объект не был найден</response>
+        </member>
+        <member name="M:KinoCMSAPI.Controllers.FilmController.GetFilmToday">
+            <summary>
+            Возвращение всех фильмов которые будет транслироваться сегодня.
+            </summary>
+            <returns></returns>
+            <response code="200">
+            Возвращает список фильмов
+            <remarks>
+            
+            		{
+            			"id": "60292c8c5f3d9b3af81083cb",
+            			"name": "Название фильма",
+            			"desc": "Описание",
+            			"img": "url",
+            			"price": 100,
+            			"urlVideo": "UrlVideo",
+            			"d3": true,
+            			"d2": true,
+            			"imax": true
+            		},
+            		{
+            			"id": "60292c8c5f3d9b3af81083cb",
+            			"name": "Название фильма",
+            			"desc": "Описание",
+            			"img": "url",
+            			"price": 100,
+            			"urlVideo": "UrlVideo",
+            			"d3": true,
+            			"d2": true,
+            			"imax": true
+            		}
+            		 
+            </remarks>
+            </response>
+            <response code="400">Если по каим либо причинам объект не был найден</response>
+        </member>
+        <member name="M:KinoCMSAPI.Controllers.FilmController.GetFilmDate(System.String)">
+            <summary>
+            Возвращение всех фильмов которые будет транслироваться в определенную дату.
+            </summary>
+            <param name="dateTime"></param>
+            <returns></returns>
+            <response code="200">
+            Возвращает список фильмов
+            <remarks>
+            
+            		{
+            			"id": "60292c8c5f3d9b3af81083cb",
+            			"name": "Название фильма",
+            			"desc": "Описание",
+            			"img": "url",
+            			"price": 100,
+            			"urlVideo": "UrlVideo",
+            			"d3": true,
+            			"d2": true,
+            			"imax": true
+            		},
+            		{
+            			"id": "60292c8c5f3d9b3af81083cb",
+            			"name": "Название фильма",
+            			"desc": "Описание",
+            			"img": "url",
+            			"price": 100,
+            			"urlVideo": "UrlVideo",
+            			"d3": true,
+            			"d2": true,
+            			"imax": true
+            		}
+            		 
+            </remarks>
+            </response>
+            <response code="400">Если по каим либо причинам объект не был найден</response>
+        </member>
+        <member name="M:KinoCMSAPI.Controllers.FilmController.PutFilm(KinoCMSAPI.Models.Film)">
+            <summary>
+            Обновление данных фильма. Authorize = Administator
+            </summary>
+            <param name="obj">Объект фильма</param>
+            <returns></returns>
+            <response code="200">
+            Возвращает только что созданный объект
+            <remarks>
+            
+            		{
+            			"id": "60292c8c5f3d9b3af81083cb",
+            			"name": "Название фильма",
+            			"desc": "Описание",
+            			"img": "url",
+            			"price": 100,
+            			"urlVideo": "UrlVideo",
+            			"d3": true,
+            			"d2": true,
+            			"imax": true
+            		}
+            		 
+            </remarks>
+            </response>
+            <response code="400">Если по каим либо причинам объект не был изменен</response>       
+        </member>
+        <member name="M:KinoCMSAPI.Controllers.FilmController.DeleteFilm(System.String)">
+            <summary>
+            Удаление фильма из таблицы, так же влечет за собой удаление всех расписаний связаных с этим фильмом и удаление фильмов из жанров. Authorize = Administator
+            </summary>
+            <param name="id">Ключ фильма</param>
+            <returns></returns>
+            <response code="204">Сообщает что объект был удален из базы</response>
+            <response code="400">Если по каим либо причинам объект не был удален</response>
+        </member>
+        <member name="M:KinoCMSAPI.Controllers.GenreController.GetGenre(System.String)">
+            <summary>
+            Возвращает объект коткретного жанра.
+            </summary>
+            <param name="name">Ключ объекта</param>
+            <returns></returns>
+            <response code="200">
+            Возвращает объект жанра
+            <remarks>
+            
+            		{
+            			"name": "Название жанра" // Является так же ключем.
+            		}
+            		 
+            </remarks>
+            </response>
+            <response code="400">Если по каим либо причинам объект не был найден</response>
+        </member>
+        <member name="M:KinoCMSAPI.Controllers.GenreController.GetGenres">
+            <summary>
+            Возвращает все жанры.
+            </summary>
+            <returns></returns>
+            <response code="200">
+            Возвращает список жанров
+            <remarks>
+            
+            		{
+            			"name": "Название жанра" // Является так же ключем.
+            		}
+            		{
+            			"name": "Название жанра" // Является так же ключем.
+            		}
+            		 
+            </remarks>
+            </response>
+            <response code="400">Если по каим либо причинам объект не был найден</response>
+        </member>
+        <member name="M:KinoCMSAPI.Controllers.GenreController.GetFilmsGenre(System.String)">
+            <summary>
+            Возвращает все фильмы с данным жанром.
+            </summary>
+            <param name="name">Ключ объекта жанра</param>
+            <returns></returns>
+            <response code="200">
+            Возвращает список фильмов
+            <remarks>
+            
+            		{
+            			"id": "60292c8c5f3d9b3af81083cb",
+            			"name": "Название фильма",
+            			"desc": "Описание",
+            			"img": "url",
+            			"price": 100,
+            			"urlVideo": "UrlVideo",
+            			"d3": true,
+            			"d2": true,
+            			"imax": true
+            		},
+            		{
+            			"id": "60292c8c5f3d9b3af81083cb",
+            			"name": "Название фильма",
+            			"desc": "Описание",
+            			"img": "url",
+            			"price": 100,
+            			"urlVideo": "UrlVideo",
+            			"d3": true,
+            			"d2": true,
+            			"imax": true
+            		}
+            		 
+            </remarks>
+            </response>
+            <response code="400">Если по каим либо причинам объект не был найден</response>
+        </member>
+        <member name="M:KinoCMSAPI.Controllers.GenreController.GetObjFilmsGenre(System.String)">
+            <summary>
+            Возвращает объект FilmsGenre
+            </summary>
+            <param name="id">Ключ объекта</param>
+            <returns></returns>
+            <response code="200">
+            Возвращает объект жанра
+            <remarks>
+            
+            		{
+            			"id": "60269d11c44061f618fa8ffd"
+            			"idFilm": "Название фильма"
+            			"idGenre": "Название жанра"
+            		}
+            		 
+            </remarks>
+            </response>
+            <response code="400">Если по каим либо причинам объект не был найден</response>
+        </member>
+        <member name="M:KinoCMSAPI.Controllers.GenreController.PostGenre(KinoCMSAPI.Models.Genre)">
+            <summary>
+            Сохранение жанра.
+            </summary>
+            <param name="obj">Объект жанра("Name")</param>
+            <remarks>
+            
+            		{
+            			"name": "Название жанра" // Так же является ключем.
+            		}
+            		 
+            </remarks>
+            <returns></returns>
+            <returns></returns>
+            <response code="201">
+            Возвращает только что созданный объект
+            <remarks>
+            
+            		{
+            			"name": "Название жанра" // Так же является ключем.
+            		}
+            		 
+            </remarks>
+            </response>
+            <response code="400">Если по каим либо причинам объект не был добавлен в базу</response>
+        </member>
+        <member name="M:KinoCMSAPI.Controllers.GenreController.PostFilmGenre(KinoCMSAPI.Models.FilmsGenre)">
+            <summary>
+            Добавляет фильму жанр
+            </summary>
+            <param name="obj">Объект FilmsGenre("idFilm", "idGenre")</param>
+            <remarks>
+            
+            		{
+            			"idFilm": "Название фильма"
+            			"idGenre": "Название жанра"
+            		}
+            		 
+            </remarks>
+            <returns></returns>
+            <response code="201">
+            Возвращает объект жанра
+            <remarks>
+            
+            		{
+            			"id": "60269d11c44061f618fa8ffd"
+            			"idFilm": "Название фильма"
+            			"idGenre": "Название жанра"
+            		}
+            		 
+            </remarks>
+            </response>
+            <response code="400">Если по каим либо причинам объект не был найден</response>
+        </member>
+        <member name="M:KinoCMSAPI.Controllers.HallController.GetHall(System.String)">
+            <summary>
+            Возвращает один конеретно зал.
+            </summary>
+            <param name="id">Ключ Hall</param>
+            <returns></returns>
+            <response code="200">
+            Возвращает объект зала
+            <remarks>
+            
+            		{
+            			"id": "60292c8c5f3d9b3af81083cb",
+            			"Name": "Название зала",
+            			"DateCreation": "Дата"
+            		}
+            		 
+            </remarks>
+            </response>
+            <response code="400">Ошибка в запросе</response>
+            <response code="404">Если по каим либо причинам объект не был найден</response>
+        </member>
+        <member name="M:KinoCMSAPI.Controllers.HallController.GetHallsCinema(System.String)">
+            <summary>
+            Возвращение список всех залов по конкретному кинотеатру.
+            </summary>
+            <param name="name">Название кинотеатра</param>
+            <returns></returns>
+            <response code="200">
+            Возвращает список залаов
+            <remarks>
+            
+            		{
+            			"id": "60292c8c5f3d9b3af81083cb",
+            			"idCinema": "Ключ Cinema",
+            			"idHall": "Ключ зала"
+            		},
+            		{
+            			"id": "60292c8c5f3d9b3af81083cb",
+            			"idCinema": "Ключ Cinema",
+            			"idHall": "Ключ зала"
+            		}
+            		 
+            </remarks>
+            </response>
+            <response code="400">Ошибка в запросе</response>
+            <response code="404">Если по каим либо причинам объект не был найден</response>
+        </member>
+        <member name="M:KinoCMSAPI.Controllers.HallController.GetHallCinema(System.String)">
+            <summary>
+            Возвращение один зал конкретного кинотеатра.
+            </summary>
+            <param name="id">Ключ HallCinema</param>
+            <returns></returns>
+            <response code="200">
+            Возвращает объект зала
+            <remarks>
+            
+            		{
+            			"id": "60292c8c5f3d9b3af81083cb",
+            			"idCinema": "Ключ Cinema",
+            			"idHall": "Ключ зала"
+            		}
+            		 
+            </remarks>
+            </response>
+            <response code="400">Ошибка в запросе</response>
+            <response code="404">Если по каим либо причинам объект не был найден</response>
+        </member>
+        <member name="M:KinoCMSAPI.Controllers.HallController.PostHall(KinoCMSAPI.Models.Hall)">
+            <summary>
+            Создает зал. Authorize = Administator
+            </summary>
+            <param name="obj">Объект Hall(Name, DateCreation)</param>
+            <remarks>
+            
+            		{
+            			"Name": "Название зала",
+            			"DateCreation": "Дата"
+            		}
+            		 
+            </remarks>
+            <returns></returns>
+            <response code="201">
+            Возвращает объект зала
+            <remarks>
+            
+            		{
+            			"id": "60292c8c5f3d9b3af81083cb",
+            			"Name": "Название зала",
+            			"DateCreation": "Дата"
+            		}
+            		 
+            </remarks>
+            </response>
+            <response code="400">Ошибка в запросе</response>
+        </member>
+        <member name="M:KinoCMSAPI.Controllers.HallController.PostHallCinema(KinoCMSAPI.Models.HallCinema)">
+            <summary>
+            Добавление зала к конкретному кинотеатру. Authorize = Administator
+            </summary>
+            <param name="obj">Объект HallCinema(idCinema, idHall)</param>
+            <remarks>
+            
+            		{
+            			"idCinema": "Ключ Cinema",
+            			"idHall": "Ключ зала"
+            		}
+            		 
+            </remarks>
+            <returns></returns>
+            <response code="201">
+            Возвращает объект зала
+            <remarks>
+            
+            		{
+            			"id": "60292c8c5f3d9b3af81083cb",
+            			"idCinema": "Ключ Cinema",
+            			"idHall": "Ключ зала"
+            		}
+            		 
+            </remarks>
+            </response>
+            <response code="400">Ошибка в запросе</response>
+        </member>
+        <member name="M:KinoCMSAPI.Controllers.HallController.RemoveHall(System.String)">
+            <summary>
+            Удаление зала из таблицы Hall, а так же удаляется из таблицы HallCinema. Authorize = Administator
+            </summary>
+            <param name="id">Ключ Hall</param>
+            <returns></returns>
+            <response code="204">Сообщает что объект был удален из базы</response>
+            <response code="400">Если по каим либо причинам объект не был удален</response>
+        </member>
+        <member name="M:KinoCMSAPI.Controllers.NewsController.GetNews">
+            <summary>
+            Возращение всех новостей.
+            </summary>
+            <returns></returns>
+            <response code="200">
+            Возвращает список новостей
+            <remarks>
+            
+            		{
+            			"Name": "Название зала",
+            			"Dsc": "Описание",
+            			"DateCreation": "Дата",
+            			"Status": true/false,
+            			"UrlVideo": "url",
+            			"Img": "url"
+            		}
+            		 
+            </remarks>
+            </response>
+            <response code="400">Ошибка в запросе</response>
+            <response code="404">Если по каим либо причинам объект не был найден</response>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:KinoCMSAPI.Controllers.NewsController.GetOneNews(System.String)" -->
+        <member name="M:KinoCMSAPI.Controllers.NewsController.GetImgsNews(System.String)">
+            <summary>
+            Возвращение всех изображений по конкретной новости.
+            </summary>
+            <param name="name">Ключ новости</param>
+            <returns></returns>
+            <response code="200">
+            Возвращает список изображений
+            <remarks>
+            
+            		{
+            			"id": "ключ"
+            			"Img": "url"
+            			"idNews": "Название новости"
+            		},
+            		{
+            			"id": "ключ"
+            			"Img": "url"
+            			"idNews": "Название новости"
+            		}
+            		 
+            </remarks>
+            </response>
+            <response code="400">Ошибка в запросе</response>
+            <response code="404">Если по каим либо причинам объект не был найден</response>
+        </member>
+        <member name="M:KinoCMSAPI.Controllers.NewsController.GetImgNews(System.String)">
+            <summary>
+            Возращение конкретного изображения.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+            Возвращает изображение
+            <response code="200">
+            <remarks>
+            
+            		{
+            			"id": "ключ"
+            			"Img": "url"
+            			"idNews": "Название новости"
+            		}
+            		 
+            </remarks>
+            </response>
+            <response code="400">Ошибка в запросе</response>
+            <response code="404">Если по каим либо причинам объект не был найден</response>
+        </member>
+        <member name="M:KinoCMSAPI.Controllers.NewsController.PostNews(KinoCMSAPI.Mocks.MockNewsImg)">
+            <summary>
+            Создание новости и одновременно сохранение картинок. Authorize = Administator
+            </summary>
+            <param name="obj">
+            Прослойка которая хронит в себе 2 объекта News и Array(ImgNews).
+            News: (Name, Dsc, DateCreation, Status, UrlVideo, Img)
+            Array(Imgs): (Img, idNews)
+            </param>
+            <returns></returns>
+            <response code="201">
+            Возвращает список изображений и новость
+            <remarks>
+            
+            		{//News
+            			"Name": "Название зала",
+            			"Dsc": "Описание",
+            			"DateCreation": "Дата",
+            			"Status": true/false,
+            			"UrlVideo": "url",
+            			"Img": "url"
+            		},
+            		{//NewsImg
+            			"id": "ключ"
+            			"Img": "url"
+            			"idNews": "Название новости"
+            		},
+            		{//NewsImg
+            			"id": "ключ"
+            			"Img": "url"
+            			"idNews": "Название новости"
+            		}
+            		 
+            </remarks>
+            </response>
+            <response code="400">Ошибка в запросе</response>
+        </member>
+        <member name="M:KinoCMSAPI.Controllers.NewsController.DeleteNews(System.String)">
+            <summary>
+            Удаление новости, так же удаляються все картинки связанные с этой новостью. Authorize = Administator
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+            <response code="204">Сообщает что объект был удален из базы</response>
+            <response code="400">Если по каим либо причинам объект не был удален</response>
+        </member>
+        <member name="M:KinoCMSAPI.Controllers.NewsController.PutNews(KinoCMSAPI.Models.News)">
+            <summary>
+            Обновление новости
+            </summary>
+            <param name="obj">Объект новость: (Name, Dsc, DateCreation, Status, UrlVideo, Img)</param>
+            <returns></returns>
+            <response code="200">
+            Возвращает новость
+            <remarks>
+            
+            		{
+            			"Name": "Название зала",
+            			"Dsc": "Описание",
+            			"DateCreation": "Дата",
+            			"Status": true/false,
+            			"UrlVideo": "url",
+            			"Img": "url"
+            		}
+            		 
+            </remarks>
+            </response>
+            <response code="400">Ошибка в запросе</response>
+            <response code="404">Если по каим либо причинам объект не был найден</response>
+        </member>
+        <member name="M:KinoCMSAPI.Controllers.ProducerController.GetProducers">
+            <summary>
+            Возращение всех продюсеров.
+            </summary>
+            <returns></returns>
+            <response code="200">
+            Возвращает список продюсеров
+            <remarks>
+            
+            		{
+            			"Name": "Имя продюсера"
+            		},
+            		{
+            			"Name": "Имя продюсера"
+            		}
+            		 
+            </remarks>
+            </response>
+            <response code="400">Ошибка в запросе</response>
+            <response code="404">Если по каим либо причинам объект не был найден</response>
+        </member>
+        <member name="M:KinoCMSAPI.Controllers.ProducerController.GetProducer(System.String)">
+            <summary>
+            Возвращение конкретного продюсера.
+            </summary>
+            <param name="name">Ключ продюсера</param>
+            <returns></returns>
+            <response code="200">
+            Возвращает продюсера
+            <remarks>
+            
+            		{
+            			"Name": "Имя продюсера"
+            		}
+            		 
+            </remarks>
+            </response>
+            <response code="400">Ошибка в запросе</response>
+            <response code="404">Если по каим либо причинам объект не был найден</response>
+        </member>
+        <member name="M:KinoCMSAPI.Controllers.ProducerController.GetFilmsProducer(System.String)">
+            <summary>
+            Возвращение всех фильмов по конкретному продюсеру.
+            </summary>
+            <param name="name">Ключ продусера</param>
+            <returns></returns>
+            <response code="200">
+            Возвращает список фильмов
+            <remarks>
+            
+            		{
+            			"id": "60292c8c5f3d9b3af81083cb",
+            			"name": "Название фильма",
+            			"desc": "Описание",
+            			"img": "url",
+            			"price": 100,
+            			"urlVideo": "UrlVideo",
+            			"d3": true,
+            			"d2": true,
+            			"imax": true
+            		},
+            		{
+            			"id": "60292c8c5f3d9b3af81083cb",
+            			"name": "Название фильма",
+            			"desc": "Описание",
+            			"img": "url",
+            			"price": 100,
+            			"urlVideo": "UrlVideo",
+            			"d3": true,
+            			"d2": true,
+            			"imax": true
+            		}
+            		 
+            </remarks>
+            </response>
+            <response code="400">Если по каим либо причинам объект не был найден</response>
+            <response code="404">Если по каим либо причинам объект не был найден</response>
+        </member>
+        <member name="M:KinoCMSAPI.Controllers.ProducerController.GetFilmsProducers">
+            <summary>
+            Возвращает список продюсер - фильм.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+            <response code="200">
+            Возвращает список продюсеров
+            <remarks>
+            
+            		{
+            			"id": "Ключ",
+            			"idFilm": "Ключ фильма" 
+            			"idProducer": "Имя продюсера"
+            		},
+            		{
+            			"idProducer": "Имя продюсера"
+            		}
+            		 
+            </remarks>
+            </response>
+            <response code="400">Ошибка в запросе</response>
+            <response code="404">Если по каим либо причинам объект не был найден</response>
+        </member>
+        <member name="M:KinoCMSAPI.Controllers.ProducerController.GetOneFilmsProducer(System.String)">
+            <summary>
+            Возвращает одно поле продюсер - фильм.
+            </summary>
+            <param name="id">Ключ FilmsProducer</param>
+            <returns></returns>
+            <response code="200">
+            Возвращает продюсер-фильм
+            <remarks>
+            
+            		{
+            			"id": "Ключ",
+            			"idFilm": "Ключ фильма" 
+            			"idProducer": "Имя продюсера"
+            		}
+            		 
+            </remarks>
+            </response>
+            <response code="400">Ошибка в запросе</response>
+            <response code="404">Если по каим либо причинам объект не был найден</response>
+        </member>
+        <member name="M:KinoCMSAPI.Controllers.ProducerController.PostProducer(KinoCMSAPI.Models.Producer)">
+            <summary>
+            Создание продюсера. Authorize = Administator
+            </summary>
+            <param name="obj">Объект продюсера (Name)</param>
+            <returns></returns>
+            <remarks>
+            		
+            		PostProducer /ToDo
+            		{
+            			"Name": "Имя продюсера"
+            		}
+            		 
+            </remarks>
+            <response code="201">
+            Возвращает только что созданный объект
+            <remarks>
+            
+            		{
+            			"Name": "Имя продюсера"
+            		}
+            		 
+            </remarks>
+            </response>
+            <response code="400">Ошибка в запросе</response>
+        </member>
+        <member name="M:KinoCMSAPI.Controllers.ProducerController.PostFilmsProducer(KinoCMSAPI.Models.FilmsProducer)">
+            <summary>
+            Добавление продюсера к фильму. Authorize = Administator
+            </summary>
+            <param name="obj"></param>
+            <remarks>
+            
+            		PostFilmsProducer /ToDo
+            		{
+            			"idFilm": "Ключ фильма" 
+            			"idProducer": "Имя продюсера"
+            		}
+            		 
+            </remarks>x
+            <returns></returns>
+            <response code="201">
+            Возвращает продюсер-фильм
+            <remarks>
+            
+            		{
+            			"id": "Ключ",
+            			"idFilm": "Ключ фильма" 
+            			"idProducer": "Имя продюсера"
+            		}
+            		 
+            </remarks>
+            </response>
+            <response code="400">Ошибка в запросе</response>
+        </member>
+        <member name="M:KinoCMSAPI.Controllers.ProducerController.DeleteProducer(System.String)">
+            <summary>
+            Удаление продюсера, так же влечет за собой удаление продюсера из всех фильмов. Authorize = Administator
+            </summary>
+            <param name="name">Ключ продюсера</param>
+            <returns></returns>
+            <response code="204">Сообщает что объект был удален из базы</response>
+            <response code="400">Если по каим либо причинам объект не был удален</response>
+        </member>
+        <member name="M:KinoCMSAPI.Controllers.ScheduleController.GetSchedules">
+            <summary>
+            Возвращение всех расписаний.
+            </summary>
+            <returns></returns>
+            <response code="200">
+            Возвращает список расписаний
+            <remarks>
+            
+            		{
+            			"id": "Ключ"
+            			"dateTime": "Дата",
+            			"idFilm": "Название фильма"
+            		},
+            		{
+            			"id": "Ключ"
+            			"dateTime": "Дата",
+            			"idFilm": "Название фильма"
+            		}
+            		 
+            </remarks>
+            </response>
+            <response code="400">Ошибка в запросе</response>
+            <response code="404">Если по каим либо причинам объект не был найден</response>
+        </member>
+        <member name="M:KinoCMSAPI.Controllers.ScheduleController.GetFilmSchedule(System.String)">
+            <summary>
+            Возвращение конкретное расписание.
+            </summary>
+            <param name="id">ключ расписания</param>
+            <returns></returns>
+            <response code="200">
+            Возвращает расписание
+            <remarks>
+            
+            		{
+            			"id": "Ключ"
+            			"dateTime": "Дата",
+            			"idFilm": "Название фильма"
+            		}
+            		 
+            </remarks>
+            </response>
+            <response code="400">Ошибка в запросе</response>
+            <response code="404">Если по каим либо причинам объект не был найден</response>
+        </member>
+        <member name="M:KinoCMSAPI.Controllers.ScheduleController.GetMovieSchedule(System.String)">
+            <summary>
+            Возвращение расписание по конкретному фильму.
+            </summary>
+            <param name="id">Ключ фильма</param>
+            <returns></returns>
+            <response code="200">
+            Возвращает расписание
+            <remarks>
+            
+            		{
+            			"id": "Ключ"
+            			"dateTime": "Дата",
+            			"idFilm": "Название фильма"
+            		},
+            		{
+            			"id": "Ключ"
+            			"dateTime": "Дата",
+            			"idFilm": "Название фильма"
+            		}
+            		 
+            </remarks>
+            </response>
+            <response code="400">Ошибка в запросе</response>
+            <response code="404">Если по каим либо причинам объект не был найден</response>
+        </member>
+        <member name="M:KinoCMSAPI.Controllers.ScheduleController.PostSchedule(KinoCMSAPI.Models.TimeTableFilms)">
+            <summary>
+            Запись одного расписания. Authorize = Administator
+            </summary>
+            <param name="obj"></param>
+            <remarks>
+            
+            		{
+            			"dateTime": "Дата",
+            			"idFilm": "Название фильма"
+            		}
+            		 
+            </remarks>
+            <returns></returns>
+            <response code="201">
+            Возвращает расписание
+            <remarks>
+            
+            		{
+            			"id": "Ключ"
+            			"dateTime": "Дата",
+            			"idFilm": "Название фильма"
+            		}
+            		 
+            </remarks>
+            </response>
+            <response code="400">Ошибка в запросе</response>
+        </member>
+        <member name="M:KinoCMSAPI.Controllers.ScheduleController.PutSchedule(KinoCMSAPI.Models.TimeTableFilms)">
+            <summary>
+            Обновление конкретного расписания. Authorize = Administator
+            </summary>
+            <param name="obj">Объект TimeTableFilms</param>
+            <returns></returns>
+            <remarks>
+            
+            		{
+            			"dateTime": "Дата",
+            			"idFilm": "Название фильма"
+            		}
+            		 
+            </remarks>
+            <returns></returns>
+            <response code="201">
+            Возвращает расписание
+            <remarks>
+            
+            		{
+            			"id": "Ключ"
+            			"dateTime": "Дата",
+            			"idFilm": "Название фильма"
+            		}
+            		 
+            </remarks>
+            </response>
+            <response code="400">Ошибка в запросе</response>
+        </member>
+        <member name="M:KinoCMSAPI.Controllers.ScheduleController.DeleteSchedule(System.String)">
+            <summary>
+            Удаление одной записи из таблицы расписания. Authorize = Administator
+            </summary>
+            <param name="id">Ключ расписания</param>
+            <returns></returns>
+            <response code="204">Сообщает что объект был удален из базы</response>
+            <response code="400">Если по каим либо причинам объект не был удален</response>
+        </member>
+        <member name="M:KinoCMSAPI.Controllers.ScreenwriterController.GetScreenwiters">
+            <summary>
+            Возращение всех сценаристов.
+            </summary>
+            <returns></returns>
+            <response code="200">
+            Возвращает список сценаристов
+            <remarks>
+            
+            		{
+            			"Name": "Имя сценариста"
+            		},
+            		{
+            			"Name": "Имя сценариста"
+            		}
+            		 
+            </remarks>
+            </response>
+            <response code="400">Ошибка в запросе</response>
+            <response code="404">Если по каим либо причинам объект не был найден</response>
+        </member>
+        <member name="M:KinoCMSAPI.Controllers.ScreenwriterController.GetScreenwriter(System.String)">
+            <summary>
+            Возвращение конкретного сценариста.
+            </summary>
+            <param name="name">Ключ сценариста</param>
+            <returns></returns>
+            <response code="200">
+            Возвращает продюсера
+            <remarks>
+            
+            		{
+            			"Name": "Имя сценариста"
+            		}
+            		 
+            </remarks>
+            </response>
+            <response code="400">Ошибка в запросе</response>
+            <response code="404">Если по каим либо причинам объект не был найден</response>
+        </member>
+        <member name="M:KinoCMSAPI.Controllers.ScreenwriterController.GetFilmsScreenwriter(System.String)">
+            <summary>
+            Возвращение всех фильмов по конкретному сценаристу.
+            </summary>
+            <param name="name">Ключ сценариста</param>
+            <returns></returns>
+            <response code="200">
+            Возвращает список фильмов
+            <remarks>
+            
+            		{
+            			"id": "60292c8c5f3d9b3af81083cb",
+            			"name": "Название фильма",
+            			"desc": "Описание",
+            			"img": "url",
+            			"price": 100,
+            			"urlVideo": "UrlVideo",
+            			"d3": true,
+            			"d2": true,
+            			"imax": true
+            		},
+            		{
+            			"id": "60292c8c5f3d9b3af81083cb",
+            			"name": "Название фильма",
+            			"desc": "Описание",
+            			"img": "url",
+            			"price": 100,
+            			"urlVideo": "UrlVideo",
+            			"d3": true,
+            			"d2": true,
+            			"imax": true
+            		}
+            		 
+            </remarks>
+            </response>
+            <response code="400">Ошибка в запросе</response>
+            <response code="404">Если по каим либо причинам объект не был найден</response>
+        </member>
+        <member name="M:KinoCMSAPI.Controllers.ScreenwriterController.GetFilmsScreenwriter">
+            <summary>
+            Возвращает список сценариста - фильм.
+            </summary>
+            <response code="200">
+            Возвращает список продюсеров
+            <remarks>
+            
+            		{
+            			"id": "Ключ",
+            			"idFilm": "Ключ фильма" 
+            			"idScreenwriter": "Имя сценариста"
+            		},
+            		{
+            			"idScreenwriter": "Имя сценариста"
+            		}
+            		 
+            </remarks>
+            </response>
+            <response code="400">Ошибка в запросе</response>
+            <response code="404">Если по каим либо причинам объект не был найден</response>
+        </member>
+        <member name="M:KinoCMSAPI.Controllers.ScreenwriterController.GetOneFilmsScreenwriter(System.String)">
+            <summary>
+            Возвращает одно поле сценарист - фильм.
+            </summary>
+            <param name="id">Ключ FilmsScreenwriter</param>
+            <returns></returns>
+            <response code="200">
+            Возвращает сценарист-фильм
+            <remarks>
+            
+            		{
+            			"id": "Ключ",
+            			"idFilm": "Ключ фильма" 
+            			"idScreenwriter": "Имя сценариста"
+            		}
+            		 
+            </remarks>
+            </response>
+            <response code="400">Ошибка в запросе</response>
+            <response code="404">Если по каим либо причинам объект не был найден</response>
+        </member>
+        <member name="M:KinoCMSAPI.Controllers.ScreenwriterController.PostScreenwriter(KinoCMSAPI.Models.Screenwriter)">
+            <summary>
+            Создание сценариста. Authorize = Administator
+            </summary>
+            <param name="obj">Объект сценариста (Name)</param>
+            <returns></returns>
+            <remarks>
+            		
+            		PostScreenwriter /ToDo
+            		{
+            			"Name": "Имя сценариста"
+            		}
+            		 
+            </remarks>
+            <response code="201">
+            Возвращает только что созданный объект
+            <remarks>
+            
+            		{
+            			"Name": "Имя сценариста"
+            		}
+            		 
+            </remarks>
+            </response>
+            <response code="400">Ошибка в запросе</response>
+        </member>
+        <member name="M:KinoCMSAPI.Controllers.ScreenwriterController.PostFilmsScreenwriter(KinoCMSAPI.Models.FilmsScreenwriter)">
+            <summary>
+            Добавление сценариста к фильму. Authorize = Administator
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+            <remarks>
+            
+            		PostFilmsScreenwriter /ToDo
+            		{
+            			"idFilm": "Ключ фильма" 
+            			"idScreenwriter": "Имя сценариста"
+            		}
+            		 
+            </remarks>x
+            <returns></returns>
+            <response code="201">
+            Возвращает продюсер-фильм
+            <remarks>
+            
+            		{
+            			"id": "Ключ",
+            			"idFilm": "Ключ фильма" 
+            			"idScreenwriter": "Имя сценариста"
+            		}
+            		 
+            </remarks>
+            </response>
+            <response code="400">Ошибка в запросе</response>
+        </member>
+        <member name="M:KinoCMSAPI.Controllers.ScreenwriterController.DeleteProducer(System.String)">
+            <summary>
+            Удаление сценариста, так же влечет за собой удаление сценариста из всех фильмов где он встречается. Authorize = Administator
+            </summary>
+            <param name="name">Ключ сценариста</param>
+            <returns></returns>
+            <response code="204">Сообщает что объект был удален из базы</response>
+            <response code="400">Если по каим либо причинам объект не был удален</response>
+        </member>
+        <member name="M:KinoCMSAPI.Controllers.UserController.GetUser(System.String)">
+            <summary>
+            Возращение пользователя. Authorization
+            </summary>
+            <param name="userName"></param>
+            <returns></returns>
+            <response code="200">
+            Возвращает имя пользователя
+            <remarks>
+            
+            		{
+            			"UserName": "Имя пользователя",
+            			"Email": "string",
+            			"Role": "Роль",
+            			"FIO": "ФИО",
+            			"Number":"Номер",
+            			"Address": "Адресс",
+            			"NumberCard": "Номер карты",
+            			"Birthday": "Дата"
+            		}
+            		 
+            </remarks>
+            </response>
+            <response code="400">Ошибка в запросе</response>
+        </member>
+        <member name="M:KinoCMSAPI.Controllers.UserController.Authorization(KinoCMSAPI.Mocks.MockRegistration)">
+            <summary>
+            Авторизация пользователя, доступна по нескольким параметрам. Email или UserName, Password.
+            </summary>
+            <param name="obj">Email: String or UserName: String
+            Password: String</param>
+            <returns></returns>
+            <remarks>
+            
+            		Authorization /ToDo
+            		{
+            			"UserName": "Имя пользователя" // "Email": "string" 
+            			"Password": "Пароль"
+            		}
+            		 
+            </remarks>x
+            <returns></returns>
+            <response code="200">
+            Возвращает имя пользователя и токен
+            <remarks>
+            
+            		{
+            			"access_token": "String"
+            			"username": "Пароль"
+            		}
+            		 
+            </remarks>
+            </response>
+            <response code="400">Ошибка в запросе</response>
+        </member>
+        <member name="M:KinoCMSAPI.Controllers.UserController.Registration(KinoCMSAPI.Mocks.MockRegistration)">
+            <summary>
+            Регистрация пользователя.
+            </summary>
+            <param name="obj">Объект MockRegistration:
+            UserName: String
+            Email: String
+            Password: String
+            Role: String</param>
+            <returns></returns>
+            <remarks>
+            
+            		Registration /ToDo
+            		{
+            			"UserName": "Имя пользователя",
+            			"Email": "string",
+            			"Role": "Роль"
+            			"Password": "Пароль"
+            		}
+            		 
+            </remarks>x
+            <returns></returns>
+            <response code="201">
+            Возвращает имя пользователя и токен
+            <remarks>
+            
+            		{
+            			"access_token": "String"
+            			"username": "Пароль"
+            		}
+            		 
+            </remarks>
+            </response>
+            <response code="400">Ошибка в запросе</response>
+        </member>
+        <member name="M:KinoCMSAPI.Controllers.UserController.PutUser(KinoCMSAPI.Models.User)">
+            <summary>
+            Изменение или добавление отсальных записей к пользователю. Authorize
+            </summary>
+            <param name="obj">UserName: String - не изменяется нужен для идентификации пользователя.
+            FIO: String
+            Number: String
+            Address: String
+            NumberCard: String
+            Birthday: DateTime</param>
+            <returns></returns>
+            <remarks>
+            
+            		PutUser /ToDo
+            		{
+            			"UserName": "Имя пользователя",
+            			"Email": "string",
+            			"Role": "Роль",
+            			"FIO": "ФИО",
+            			"Number":"Номер",
+            			"Address": "Адресс",
+            			"NumberCard": "Номер карты",
+            			"Birthday": "Дата"
+            		}
+            		 
+            </remarks>
+            <returns></returns>
+            <response code="200">
+            Возвращает имя пользователя
+            <remarks>
+            
+            		{
+            			"UserName": "Имя пользователя",
+            			"Email": "string",
+            			"Role": "Роль",
+            			"FIO": "ФИО",
+            			"Number":"Номер",
+            			"Address": "Адресс",
+            			"NumberCard": "Номер карты",
+            			"Birthday": "Дата"
+            		}
+            		 
+            </remarks>
+            </response>
+            <response code="400">Ошибка в запросе</response>
+        </member>
+        <member name="M:KinoCMSAPI.Controllers.UserController.PutRole(KinoCMSAPI.Mocks.MockRegistration)">
+            <summary>
+            Изменение роли пользователя. Authorize - Administator
+            </summary>
+            <param name="obj">UserName: String - не изменяется нужен для идентификации пользователя.
+            Role: String (принимает значение Administator или User)</param>
+            <returns></returns>
+            <remarks>
+            
+            		PutRole /ToDo
+            		{
+            			"UserName": "Имя пользователя"
+            			"Role": "Роль"
+            		}
+            		 
+            </remarks>x
+            <returns></returns>
+            <response code="200">
+            Возвращает имя пользователя и токен
+            <remarks>
+            
+            		{
+            			"UserName": "Имя пользователя",
+            			"Email": "string",
+            			"Role": "Роль",
+            			"FIO": "ФИО",
+            			"Number":"Номер",
+            			"Address": "Адресс",
+            			"Birthday": "Дата"
+            		}
+            		 
+            </remarks>
+            </response>
+            <response code="400">Ошибка в запросе</response>
+        </member>
+        <member name="M:KinoCMSAPI.Controllers.UserController.PutPassword(KinoCMSAPI.Mocks.MockRegistration)">
+            <summary>
+            Изменение пароля. Authorize
+            </summary>
+            <param name="obj">UserName: String - не изменяется нужен для идентификации пользователя.
+            Password: String (принимает значение Administator или User)</param>
+            <returns></returns>
+            <remarks>
+            
+            		PutPassword /ToDo
+            		{
+            			"UserName": "Имя пользователя"
+            			"Password": "Пароль"
+            		}
+            		 
+            </remarks>x
+            <returns></returns>
+            <response code="200">
+            Возвращает имя пользователя и токен
+            <remarks>
+            
+            		{
+            			"UserName": "Имя пользователя",
+            			"Email": "string",
+            			"Role": "Роль",
+            			"FIO": "ФИО",
+            			"Number":"Номер",
+            			"Address": "Адресс",
+            			"NumberCard": "Номер карты",
+            			"Birthday": "Дата"
+            		}
+            		 
+            </remarks>
+            </response>
+            <response code="400">Ошибка в запросе</response>
+        </member>
+        <member name="M:KinoCMSAPI.Models.DataBase.SetValue``1(System.String,``0)">
+            <summary>
+            Создание какого либо объекта связаного с БД.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="table">Имя таблицы</param>
+            <param name="record">Объект относящийся к бд</param>
+        </member>
+        <member name="M:KinoCMSAPI.Models.DataBase.Save``1(System.String,System.String,``0)">
+            <summary>
+            Обновление полей в бд.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="table">Имя таблицы</param>
+            <param name="id">Ключ записи</param>
+            <param name="record">Объект относящийся к бд</param>
+        </member>
+        <member name="M:KinoCMSAPI.Models.DataBase.GetTimetableFilms(System.String)">
+            <summary>
+            Возвращает коллекцию расписание по конкретному фильму.
+            </summary>
+            <param name="id">Ключ фильма который вам необходимо</param>
+            <returns></returns>
+        </member>
+        <member name="M:KinoCMSAPI.Models.DataBase.GetFilmsScreenwiter(System.String)">
+            <summary>
+            Возвращает коллекцию фильмов по конкретному сценаристу.
+            </summary>
+            <param name="id">Ключ сценариста который вам необходимо</param>
+            <returns></returns>
+        </member>
+        <member name="T:KinoCMSAPI.Models.FilmsGenre">
+            <summary>
+            Связь один-многие, для реализацие многожанровости к фильму.
+            </summary>
+        </member>
+        <member name="T:KinoCMSAPI.Models.FilmsProducer">
+            <summary>
+            Связь один-многие. (Многие - фильм, Один - Продюсер)
+            </summary>
+        </member>
+        <member name="T:KinoCMSAPI.Models.FilmsScreenwriter">
+            <summary>
+            Связь один-многие. (Многие - фильм, Один - сценарист)
+            </summary>
+        </member>
+    </members>
+</doc>
